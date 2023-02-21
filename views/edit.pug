@@ -1,0 +1,16 @@
+extends layout
+block content 
+    .row 
+    .col-md-4
+      .card 
+       .card-body 
+        h3  editer une tache
+       .card-body
+         form(method="POST", action='/editer/'+doc.id+"?_method=PUT") 
+            .form-group
+                label(for='todo') editer une tache:
+                input.form-control#todo(type='text',value=doc.title, name="title")
+                button(type="submit").btn.btn-primary.btn-block.mt-4
+                 | editer 
+                i.fas.fa-plus
+

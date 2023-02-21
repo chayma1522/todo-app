@@ -1,0 +1,39 @@
+extends layout
+block content 
+  .row 
+    .col-md-4
+      .card 
+       .card-body 
+        h3  ajouter une tache
+       .card-body
+        form(action='/ajouter',method="POST") 
+            .form-group
+                label(for='todo') ajouter une tache:
+                input.form-control#todo(type='text', name="title")
+                button(type="submit").btn.btn-primary.btn-block.mt-4
+                 | ajouter 
+                i.fas.fa-plus
+
+    col-md-8
+       
+            
+        table.table.table-striped
+            thead
+                tr
+                th(scope='col') id
+                th(scope='col') todo
+                th(scope='col') editer
+                th(scope='col') delete
+            tbody
+                 each doc in docs
+                    tr
+                    th(scope='row')= doc.id
+                    td= doc.title
+                    td 
+                     a(href="/editer/"+ doc.id ).btn.btn-info.btn-sm editer
+                         
+                    td 
+                     form( method="POST",action="/supprimer/" + doc.id + "?_method=DELETE") 
+                        button(type="submit").btn.btn-danger.btn-sm supprimer
+
+                    
